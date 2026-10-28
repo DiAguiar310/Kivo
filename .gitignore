@@ -1,9 +1,16 @@
 # Maven
 target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Permitir target dentro do código-fonte
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 # IntelliJ IDEA
 .idea/
 *.iml
+*.iws
+*.ipr
 out/
 
 # Android Studio / Gradle
@@ -13,7 +20,11 @@ local.properties
 *.apk
 *.aab
 
-# Segredos (nunca para o GitHub)
+# Permitir build dentro do código-fonte
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Segredos e configurações locais
 application.properties
 .env
 *service-account*.json
@@ -23,7 +34,24 @@ google-services.json
 .DS_Store
 Thumbs.db
 
-# Para o server (O claude pediu para adicionar)
-application.properties
-.env
-*service-account*.json
+# Eclipse / Spring Tool Suite (STS)
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Visual Studio Code
+.vscode/
+
+# Outros
+HELP.md
