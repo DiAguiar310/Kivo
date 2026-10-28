@@ -22,3 +22,8 @@ google-services.json
 # Sistema operativo
 .DS_Store
 Thumbs.db
+
+# Para o server (O claude pediu para adicionar)
+application.properties
+.env
+*service-account*.json
