@@ -1,6 +1,5 @@
 package pt.kivo.server.controller;
 
-import org.apache.catalina.core.PropertiesRoleMappingListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -60,10 +59,6 @@ public class ProdutoController {
         }
         produtoRepository.deleteById(id);
     }
-
-
-
-
 
 }
 
