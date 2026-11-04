@@ -5,4 +5,3 @@ import pt.kivo.server.model.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 }
-    
