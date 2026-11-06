@@ -1,8 +1,9 @@
 package pt.kivo.server.model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Produto {
@@ -11,20 +12,16 @@ public class Produto {
     private Long id;
 
     private String nome;
-
     private String marca;
 
-    @ManyToOne
-    @JoinColumn(name = "subcategoria_id")
-    private Subcategoria subcategoria;
+    @ManyToMany // Relação muitos para muitos
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+    // Criar a Tabela SQL para guardar as subcategorias acossiadas a um produto
+    @JoinTable(name = "produto_subcategoria", // Nome da Tabela no SQL
+            joinColumns = @JoinColumn(name = "produto_id"), // Coluna que aponta para o produto
+            inverseJoinColumns = @JoinColumn(name = "subcategoria_id") // Coluna que aponta para  a subcategoria
+    )
+    private Set<Subcategoria> subcategorias = new HashSet<>(); // Permitir criar varias subcategorias sem repetir o mesmo elemento
 
     public Long getId() {
         return id;
@@ -42,11 +39,19 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Subcategoria getSubcategoria() {
-        return subcategoria;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setSubcategoria(Subcategoria subcategoria) {
-        this.subcategoria = subcategoria;
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Set<Subcategoria> getSubcategorias() {
+        return subcategorias;
+    }
+
+    public void setSubcategorias(Set<Subcategoria> subcategorias) {
+        this.subcategorias = subcategorias;
     }
 }
