@@ -6,6 +6,11 @@
 
     <title>Login | Kivo Admin</title>
 
+
+    <!-- Ícone do separador do navegador -->
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/K_escuro.svg}">
+
+
     <!-- Tipografia -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,11 +34,6 @@
     <h1>Painel de administração</h1>
 
     <form th:action="@{/login}" method="post">
-
-        <!-- Mensagem apresentada se o login falhar -->
-        <p class="login-error" th:if="${param.error}" role="alert">
-            Email ou palavra-passe inválidos.
-        </p>
 
         <div class="form-group">
             <label for="username">E-mail</label>
@@ -107,6 +107,11 @@
             </div>
         </div>
 
+        <!-- Mensagem  de erro -->
+        <p class="login-error" th:if="${param.error}" role="alert">
+            Email ou palavra-passe inválidos.
+        </p>
+
         <button class="login-button" type="submit">
             Entrar
         </button>
@@ -144,6 +149,8 @@
         button.setAttribute('aria-pressed', String(mostrar));
     }
 
+    <!-- Limpar a mensagem de erro ao dar f5    -->
+    window.history.replaceState(null, "", window.location.pathname);
 </script>
 
 </body>

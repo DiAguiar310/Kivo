@@ -138,11 +138,12 @@
     cursor: not-allowed;
 }
 
-/* MENSAGEM DE ERRO DO LOGIN */
+/* Mensagem erro do login */
 .login-error {
+    margin: 8px 0;
     color: var(--cor-erro);
     font-size: 14px;
-    text-align: left;
+    text-align: center;
 }
 
 /* MENSAGEM DE AJUDA NO FUNDO DA PÁGINA */
