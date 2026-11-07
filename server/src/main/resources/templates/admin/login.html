@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Kivo Admin</title>
+</head>
+<body>
+<main>
+    <h1>Kivo</h1>
+    <p>Painel de Administração</p>
+
+    <h2>Iniciar sessão</h2>
+
+    <form th:action="@{/login}" method="post">  <!-- Formulario de login -->
+
+        <label for="username">Email</label>
+
+        <input
+                type="email"
+                id="username"
+                name="username"
+                placeholder="gerente@kivo.pt"
+                required
+        >
+
+        <label for="password">Palavra-passe</label>
+
+        <input
+                type="password"
+                id="password"
+                name="password"
+                required
+        >
+
+        <button type="submit" disabled>
+            Entrar
+        </button>
+
+    </form>
+
+    <p>Acesso reservado a funcionários autorizados.</p>
+</main>
+</body>
+</html>

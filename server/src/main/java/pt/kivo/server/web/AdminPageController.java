@@ -2,17 +2,29 @@ package pt.kivo.server.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
-@RequestMapping("/admin")
+@Controller // Indicar a Classe que controla os pedidos web
 public class AdminPageController {
 
-    @GetMapping
+    // Metodo Incial que redireciona para o admin
+    @GetMapping({
+                    "/",
+                    "/admin"
+            })
+    public String inicio() {
+        return "redirect:/login";
+    }
+
+    @GetMapping("/login") // Mostra a pagina de login da pagina de administração
+    public String login() {
+        return "admin/login";
+    }
+
+    @GetMapping("/dashboard") // Mostra a pagina do dashboard
     public String dashboard() {
         return "admin/dashboard";
     }
+
 }
 
 
