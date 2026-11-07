@@ -1,0 +1,171 @@
+/* FUNDO DA PÁGINA */
+.login-page {
+    min-height: 100vh; /* Altura mínima igual à do ecrã */
+    display: flex;
+    flex-direction: column; /* Organiza os elementos na vertical */
+    align-items: center; /* Centra os elementos horizontalmente */
+    background: var(--cor-pagina);
+}
+
+/* CARTÃO DE LOGIN */
+.login-card {
+    width: 90%; /* Ocupa 90% da largura disponível */
+    max-width: 440px; /* Nunca ultrapassa 440 pixels */
+    margin: auto 0; /* Centra o cartão verticalmente */
+    padding: 40px; /* Espaço entre o conteúdo e a borda */
+    background: var(--cor-cartao);
+    border-radius: 16px; /* Cantos arredondados */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* LOGÓTIPO KIVO */
+.login-logo {
+    display: block;
+    width: 190px;
+    height: auto; /* Mantém as proporções da imagem */
+    margin: 0 auto 28px; /* Centra e deixa espaço por baixo */
+}
+
+/* TÍTULO */
+.login-card h1 {
+    margin: 0 0 28px;
+    font-family: Fraunces, Georgia, serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* GRUPOS DE CAMPOS (EMAIL E PASSWORD) */
+.form-group {
+    margin-bottom: 16px; /* Espaço entre campos */
+    text-align: left;
+}
+
+.form-group label {
+    display: block; /* Coloca a etiqueta numa linha própria */
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* CAIXA QUE CONTÉM O INPUT E O ÍCONE */
+.input-wrap {
+    position: relative; /* Referência para posicionar os ícones */
+}
+
+/* CAMPOS DE TEXTO */
+.input-wrap input {
+    width: 100%;
+    height: 48px;
+    padding: 0 48px; /* Espaço para os ícones */
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--cor-texto);
+    font-size: 16px;
+}
+
+.input-wrap input::placeholder {
+    color: var(--cor-secundaria);
+}
+
+/* ÍCONES DE EMAIL E CADEADO */
+.input-wrap > svg,
+.input-wrap > .input-icon {
+    position: absolute; /* Coloca o ícone dentro do campo */
+    top: 50%; /* Posiciona a meio da altura */
+    left: 14px; /* Distância à esquerda */
+    transform: translateY(-50%); /* Ajusta a centragem */
+    width: 20px;
+    height: 20px;
+    pointer-events: none; /* O ícone não bloqueia cliques */
+}
+
+/* Cor das linhas do SVG escrito diretamente no HTML */
+.input-wrap > svg {
+    fill: none;
+    stroke: var(--cor-secundaria);
+    stroke-width: 1.7;
+}
+
+/* BOTÃO DE MOSTRAR/OCULTAR PASSWORD */
+.password-toggle {
+    position: absolute;
+    top: 2px;
+    right: 2px; /* Coloca o botão à direita do campo */
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center; /* Centra o ícone dentro do botão */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Tamanho dos ícones dos olhos */
+.password-toggle img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Esconde o olho que não está a ser utilizado */
+.password-toggle img[hidden] {
+    display: none;
+}
+
+/* BOTÃO ENTRAR */
+.login-button {
+    width: 100%;
+    height: 48px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    background: var(--cor-botao);
+    color: var(--creme);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Cor do botão quando passamos o rato */
+.login-button:hover {
+    background: var(--cor-botao-hover);
+}
+
+/* Aspeto do botão quando está desativado */
+.login-button:disabled {
+    background: var(--cor-pagina);
+    color: var(--cor-secundaria);
+    cursor: not-allowed;
+}
+
+/* MENSAGEM DE ERRO DO LOGIN */
+.login-error {
+    color: var(--cor-erro);
+    font-size: 14px;
+    text-align: left;
+}
+
+/* MENSAGEM DE AJUDA NO FUNDO DA PÁGINA */
+.login-help {
+    padding: 24px 16px;
+    color: var(--cor-secundaria);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* DESTAQUE PARA NAVEGAÇÃO COM TECLADO */
+:focus-visible {
+    outline: 2px solid var(--cor-botao);
+    outline-offset: 2px;
+}
+
+/* ADAPTAÇÃO PARA TELEMÓVEIS */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 24px; /* Menos espaço em ecrãs pequenos */
+    }
+
+    .login-card h1 {
+        font-size: 24px; /* Título um pouco menor */
+    }
+}

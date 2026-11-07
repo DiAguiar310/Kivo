@@ -2,46 +2,149 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login | Kivo Admin</title>
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500;600&display=swap"
+            rel="stylesheet"
+    >
+
+    <!-- Ficheiros CSS -->
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
-<body>
-<main>
-    <h1>Kivo</h1>
-    <p>Painel de Administração</p>
 
-    <h2>Iniciar sessão</h2>
+<body class="login-page">
 
-    <form th:action="@{/login}" method="post">  <!-- Formulario de login -->
+<main class="login-card">
 
-        <label for="username">Email</label>
+    <!-- Guarda o SVG em static/images/kivo.svg -->
+    <img th:src="@{/images/Kivo.svg}" alt="Logótipo Kivo" class="login-logo">
 
-        <input
-                type="email"
-                id="username"
-                name="username"
-                placeholder="gerente@kivo.pt"
-                required
-        >
+    <h1>Painel de administração</h1>
 
-        <label for="password">Palavra-passe</label>
+    <form th:action="@{/login}" method="post">
 
-        <input
-                type="password"
-                id="password"
-                name="password"
-                required
-        >
+        <!-- Mensagem apresentada se o login falhar -->
+        <p class="login-error" th:if="${param.error}" role="alert">
+            Email ou palavra-passe inválidos.
+        </p>
 
-        <button type="submit" disabled>
+        <div class="form-group">
+            <label for="username">E-mail</label>
+
+            <div class="input-wrap">
+
+                <!-- Ícone de email -->
+                <img
+                        class="input-icon"
+                        th:src="@{/icons/envelope2-outline.svg}"
+                        alt=""
+                        aria-hidden="true"
+                >
+
+                <input
+                        type="email"
+                        id="username"
+                        name="username"
+                        autocomplete="email"
+                        required
+                >
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Palavra-passe</label>
+
+            <div class="input-wrap">
+
+                <!-- Ícone de cadeado -->
+                <img
+                        class="input-icon"
+                        th:src="@{/icons/lock-outline.svg}"
+                        alt=""
+                        aria-hidden="true"
+                >
+
+                <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        autocomplete="current-password"
+                        required
+                >
+
+                <!-- Botão para mostrar ou ocultar a palavra-passe -->
+                <button
+                        class="password-toggle"
+                        type="button"
+                        aria-label="Mostrar palavra-passe"
+                        aria-pressed="false"
+                        onclick="togglePassword(this)"
+                >
+                    <img
+                            class="eye-open"
+                            th:src="@{/icons/eye-open-outline.svg}"
+                            alt=""
+                            aria-hidden="true"
+                    >
+
+                    <img
+                            class="eye-off"
+                            th:src="@{/icons/eye-off-outline.svg}"
+                            alt=""
+                            aria-hidden="true"
+                            hidden
+                    >
+                </button>
+
+            </div>
+        </div>
+
+        <button class="login-button" type="submit">
             Entrar
         </button>
 
     </form>
 
-    <p>Acesso reservado a funcionários autorizados.</p>
 </main>
+
+<footer class="login-help">
+    Precisa de ajuda? Contacte o suporte Kivo.
+</footer>
+
+<script>
+    function togglePassword(button) {
+        const password = document.getElementById('password');
+
+        const eyeOpen = button.querySelector('.eye-open');
+        const eyeOff = button.querySelector('.eye-off');
+
+        const mostrar = password.type === 'password';
+
+        // Alternar a visibilidade da palavra-passe
+        password.type = mostrar ? 'text' : 'password';
+
+        // Alternar os ícones
+        eyeOpen.hidden = mostrar;
+        eyeOff.hidden = !mostrar;
+
+        // Atualizar acessibilidade
+        button.setAttribute(
+            'aria-label',
+            mostrar ? 'Ocultar palavra-passe' : 'Mostrar palavra-passe'
+        );
+
+        button.setAttribute('aria-pressed', String(mostrar));
+    }
+
+</script>
+
 </body>
 </html>

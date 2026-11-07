@@ -1,0 +1,26 @@
+/* Cores oficiais do Kivo */
+:root {
+    --verde: #133A2D;
+    --creme: #F2EEE1;
+    --dourado: #B78747;
+    --grafite: #242420;
+
+    /* Cores da interface */
+    --cor-pagina: #E8E3D3;
+    --cor-cartao: var(--creme);
+    --cor-texto: var(--grafite);
+    --cor-secundaria: #5B5A52;
+    --cor-botao: #203D31;
+    --cor-botao-hover: #2F5A47;
+    --cor-erro: #B3261E;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--cor-texto);
+    font-family: Inter, Arial, sans-serif;
+}
