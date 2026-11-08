@@ -1,0 +1,91 @@
+/* Cartão do formulário */
+.support-card {
+    max-width: 700px; /* Limita a largura do formulário */
+    padding: 30px;
+    background: var(--cor-cartao);
+    border-radius: 12px;
+}
+
+.support-card h2 {
+    margin: 0 0 24px;
+    font-size: 22px;
+}
+
+/* Cada campo do formulário */
+.support-field {
+    margin-bottom: 20px;
+}
+
+.support-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Campos de texto e lista de opções */
+.support-field input,
+.support-field select,
+.support-field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 15px;
+}
+
+/* Permite aumentar a descrição apenas na vertical */
+.support-field textarea {
+    resize: vertical;
+}
+
+/* Botão de envio */
+.support-submit {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: var(--cor-botao);
+    color: var(--creme);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.support-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Ecrãs pequenos */
+@media (max-width: 700px) {
+    .support-card {
+        padding: 20px;
+    }
+}
+
+/* Campo para anexar imagens */
+.support-field input[type="file"] {
+    background: var(--cor-pagina);
+    cursor: pointer;
+}
+
+/* Texto de ajuda */
+.support-field small {
+    display: block;
+    margin-top: 8px;
+    color: var(--cor-secundaria);
+    font-size: 13px;
+}
+
+/* Mensagens do formulário */
+.support-success {
+    color: #24733B;
+    margin-bottom: 16px;
+}
+
+.support-error {
+    color: var(--cor-erro);
+    margin-bottom: 16px;
+}
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Suporte | Kivo Admin</title>
+
+    <link rel="icon" type="image/svg+xml"
+          th:href="@{/images/K_escuro.svg}">
+
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/suporte.css}">
+</head>
+
+<body class="dashboard-page">
+
+<!-- Barra lateral -->
+<aside class="sidebar">
+
+    <img class="sidebar-logo"
+         th:src="@{/images/Kivo_fundo_escuro.svg}"
+         alt="Kivo">
+
+    <nav>
+        <a th:href="@{/dashboard}">
+            <img class="sidebar-icon"
+                 th:src="@{/icons/pie-outline.svg}" alt="">
+            Dashboard
+        </a>
+
+        <a th:href="@{/suporte}">
+            <img class="sidebar-icon"
+                 th:src="@{/icons/headset-outline.svg}" alt="">
+            Suporte
+        </a>
+    </nav>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">
+            <img class="sidebar-icon"
+                 th:src="@{/icons/logout4-outline.svg}" alt="">
+            Terminar sessão
+        </button>
+    </form>
+
+</aside>
+
+<!-- Conteúdo da página -->
+<main class="dashboard-main">
+
+    <h1>Suporte</h1>
+    <p>Envia um pedido à equipa de suporte Kivo.</p>
+
+    <section class="support-card">
+
+        <h2>Novo pedido de suporte</h2>
+
+        <!-- Resultado do envio -->
+        <p class="support-success" th:if="${sucesso}" th:text="${sucesso}"></p>
+
+        <p class="support-error" th:if="${erro}" th:text="${erro}" role="alert"></p>
+
+
+        <form th:action="@{/suporte}" method="post" enctype="multipart/form-data">
+
+            <!-- Seleção da loja -->
+            <div class="support-field">
+                <label for="loja">Loja</label>
+
+                <select id="loja" name="loja" required>
+                    <option value="" disabled selected>Seleciona uma loja</option>
+                    <option value="LOJA_TESTE">Loja de Teste</option>
+                </select>
+            </div>
+
+            <!-- Grau de urgência -->
+            <div class="support-field">
+                <label for="urgencia">Grau de urgência</label>
+
+                <select id="urgencia" name="urgencia" required>
+                    <option value="" disabled selected>Seleciona a urgência</option>
+                    <option value="BAIXA">Baixa</option>
+                    <option value="MEDIA">Média</option>
+                    <option value="ALTA">Alta</option>
+                    <option value="CRITICA">Crítica</option>
+                </select>
+            </div>
+
+            <!-- Tipo de pedido -->
+            <div class="support-field">
+                <label for="tipo">Tipo de pedido</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Seleciona uma opção</option>
+                    <option value="ERRO_TECNICO">Erro técnico</option>
+                    <option value="RECLAMACAO">Reclamação</option>
+                    <option value="DUVIDA">Dúvida</option>
+                    <option value="OUTRO">Outro</option>
+                </select>
+            </div>
+
+            <!-- Assunto -->
+            <div class="support-field">
+                <label for="assunto">Assunto</label>
+                <input type="text"
+                       id="assunto"
+                       name="assunto"
+                       autocomplete="off"
+                       required>
+            </div>
+
+            <!-- Descrição -->
+            <div class="support-field">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao"
+                          name="descricao"
+                          rows="6"
+                          placeholder="Descreve o problema..."
+                          required></textarea>
+            </div>
+
+            <!-- Anexos do pedido de suporte -->
+            <div class="support-field">
+                <label for="imagens">Imagens ou capturas de ecrã</label>
+
+                <input
+                        type="file"
+                        id="imagens"
+                        name="imagens"
+                        accept=".png,.jpg,.jpeg,.webp"
+                        multiple
+                >
+
+                <small>Opcional, pode anexar imagens PNG, JPG ou WebP.</small>
+            </div>
+
+            <!-- Ativamos no passo de guardar no MySQL -->
+            <button class="support-submit" type="submit">
+                Enviar pedido
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+</body>
+</html>

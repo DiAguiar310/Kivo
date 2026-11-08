@@ -37,6 +37,13 @@ public class AdminPageController {
         return "admin/dashboard";
     }
 
+
+    @GetMapping("/suporte")
+    public String suporte() {
+        return "admin/suporte";
+    }
+
+
 }
 
 
