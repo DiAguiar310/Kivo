@@ -63,18 +63,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService(
-            PasswordEncoder passwordEncoder,
-            @Value("${KIVO_ADMIN_PASSWORD}") String password) {
-
-        // Primeira conta de teste do Kivo
-        UserDetails utilizador = User.withUsername("lojateste@kivo.pt")
-                .password(passwordEncoder.encode(password))
-                .roles("GERENTE")
-                .build();
-
-        return new InMemoryUserDetailsManager(utilizador);
-    }
-
 }
