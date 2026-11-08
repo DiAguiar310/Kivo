@@ -1,0 +1,176 @@
+/* Dasboard */
+.dashboard-page {
+    display: flex; /* Coloca a barra lateral e o conteúdo lado a lado */
+    min-height: 100vh; /* Ocupa pelo menos a altura do ecrã */
+    background: var(--cor-pagina);
+}
+
+/* BARRA LATERAL */
+.sidebar {
+    width: 240px;
+    padding: 30px 20px;
+    background: var(--cor-botao);
+    display: flex;
+    flex-direction: column; /* Organiza tudo de cima para baixo */
+}
+
+.sidebar-logo {
+    width: 150px;
+    margin-bottom: 40px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre as ligações */
+}
+
+/* Links e botão de logout */
+
+/* Links e botão da barra lateral */
+.sidebar a,
+.sidebar button {
+    display: flex; /* Coloca o ícone e o texto lado a lado */
+    align-items: center; /* Alinha-os verticalmente */
+    gap: 12px; /* Espaço entre o ícone e o texto */
+
+    width: 100%;
+    padding: 12px;
+
+    color: var(--creme);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o rato */
+.sidebar a:hover,
+.sidebar button:hover {
+    background: var(--cor-botao-hover);
+}
+
+/* Ícones da barra lateral */
+.sidebar-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* Torna os ícones brancos */
+}
+
+.sidebar form {
+    margin-top: auto; /* Empurra o botão para baixo */
+}
+
+/* CONTEÚDO PRINCIPAL */
+.dashboard-main {
+    flex: 1; /* Ocupa o espaço que sobra */
+    padding: 24px 32px;
+}
+
+.dashboard-main h1 {
+    color: var(--cor-texto);
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.dashboard-main > p {
+    color: var(--cor-secundaria);
+    margin-bottom: 20px;
+}
+
+/* CARTÕES */
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap; /* Passa cartões para a linha seguinte se necessário */
+    gap: 20px;
+}
+
+.dashboard-card {
+    flex: 1;
+    min-width: 180px;
+    padding: 20px;
+    background: var(--cor-cartao);
+    border-radius: 12px;
+}
+
+.dashboard-support h2 {
+    margin: 0 0 10px;
+}
+.dashboard-card p {
+    margin-bottom: 16px;
+}
+
+.dashboard-card span {
+    color: var(--cor-secundaria);
+    font-size: 13px;
+}
+
+/* Títulos dos cartões */
+.dashboard-card h2 {
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+
+/* ÁREA DE SUPORTE */
+.dashboard-support {
+    margin-top: 30px;
+    padding: 30px;
+    background: var(--cor-cartao);
+    border-radius: 12px;
+}
+
+.dashboard-support h2 {
+    margin-bottom: 10px;
+}
+
+.dashboard-support p {
+    margin-bottom: 24px;
+}
+
+.support-button {
+    display: inline-block;
+    padding: 12px 20px;
+    color: var(--creme);
+    background: var(--cor-botao);
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.support-button:hover {
+    background: var(--cor-botao-hover);
+}
+
+/* ECRÃS PEQUENOS */
+@media (max-width: 700px) {
+    .dashboard-page {
+        flex-direction: column; /* Barra lateral passa para cima */
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar-logo {
+        margin-bottom: 20px;
+    }
+
+    .sidebar form {
+        margin-top: 10px;
+    }
+
+    .dashboard-main {
+        padding: 20px;
+    }
+}
+
+/* Faz o botão de logout ocupar toda a largura do menu */
+.sidebar button {
+    width: 100%;
+    font-family: inherit;
+}

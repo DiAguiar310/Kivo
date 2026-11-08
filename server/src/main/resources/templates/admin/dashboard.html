@@ -1,17 +1,88 @@
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Kivo Admin</title>
-</head>
-<body>
-<h1>Bem-vindo ao Kivo Admin!</h1>
-<p>O painel de administração está a funcionar.</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<form th:action="@{/logout}" method="post">
-    <button type="submit">
-        Terminar sessão
-    </button>
-</form>
+    <title>Dashboard | Kivo Admin</title>
+
+    <link rel="icon" type="image/svg+xml"
+          th:href="@{/images/K_escuro.svg}">
+
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+
+<body class="dashboard-page">
+
+<!-- Barra lateral -->
+<aside class="sidebar">
+
+    <img class="sidebar-logo"
+         th:src="@{/images/Kivo_fundo_escuro.svg}"
+         alt="Kivo">
+
+    <!-- Menu lateral -->
+    <nav>
+        <a th:href="@{/dashboard}">
+            <img class="sidebar-icon"
+                 th:src="@{/icons/pie-outline.svg}"
+                 alt="">
+            Dashboard
+        </a>
+
+        <a th:href="@{/suporte}">
+            <img class="sidebar-icon"
+                 th:src="@{/icons/headset-outline.svg}"
+                 alt="">
+            Suporte
+        </a>
+    </nav>
+
+    <!-- Terminar sessão -->
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">
+            <img class="sidebar-icon"
+                 th:src="@{/icons/logout4-outline.svg}"
+                 alt="">
+            Terminar sessão
+        </button>
+    </form>
+
+</aside>
+
+
+<main class="dashboard-main">
+
+    <h1>Dashboard</h1>
+    <p>Bem vindo ao painel de administração Kivo.</p>
+
+    <!-- Resumo das funcionalidades -->
+    <section class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h2>Produtos</h2>
+            <p>Gestão do catálogo</p>
+            <span>Em breve</span>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Categorias</h2>
+            <p>Organização dos produtos</p>
+            <span>Em breve</span>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Lojas</h2>
+            <p>Gestão das lojas</p>
+            <span>Em breve</span>
+        </div>
+
+    </section>
+
+</main>
+
 </body>
 </html>
