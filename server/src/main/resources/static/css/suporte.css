@@ -89,3 +89,26 @@
     margin-bottom: 16px;
 }
 
+/* Animação de carregamento do botão */
+.support-submit.loading::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 10px;
+
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+
+    animation: girar 0.8s linear infinite;
+    vertical-align: middle;
+}
+
+/* Faz o círculo rodar continuamente */
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+

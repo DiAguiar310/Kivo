@@ -64,7 +64,7 @@
         <p class="support-error" th:if="${erro}" th:text="${erro}" role="alert"></p>
 
 
-        <form th:action="@{/suporte}" method="post" enctype="multipart/form-data">
+        <form id="form-suporte" th:action="@{/suporte}" method="post" enctype="multipart/form-data">
 
             <!-- Seleção da loja -->
             <div class="support-field">
@@ -137,15 +137,38 @@
             </div>
 
             <!-- Ativamos no passo de guardar no MySQL -->
-            <button class="support-submit" type="submit">
+            <button class="support-submit" type="submit" id="botao-enviar">
                 Enviar pedido
             </button>
+
 
         </form>
 
     </section>
 
 </main>
+<script>
+    const formulario = document.getElementById("form-suporte");
+    const botao = document.getElementById("botao-enviar");
 
+    formulario.addEventListener("submit", function () {
+
+        // Impede vários cliques enquanto o pedido é enviado
+        botao.disabled = true;
+
+        // Altera o texto do botão
+        botao.textContent = "A enviar...";
+
+        // Ativa a animação do CSS
+        botao.classList.add("loading");
+    });
+
+    // Repõe o botão se o navegador restaurar a página anterior
+    window.addEventListener("pageshow", function () {
+        botao.disabled = false;
+        botao.textContent = "Enviar pedido";
+        botao.classList.remove("loading");
+    });
+</script>
 </body>
 </html>
