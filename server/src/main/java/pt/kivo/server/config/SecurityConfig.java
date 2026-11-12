@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import jakarta.servlet.DispatcherType;
+import org.springframework.http.HttpMethod;
 
 @Configuration
 public class SecurityConfig {
@@ -21,6 +23,8 @@ public class SecurityConfig {
         http
                 // Define quem pode aceder a cada página
                 .authorizeHttpRequests(auth -> auth
+                        .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
+
 
                         .requestMatchers(
                                 "/login",
@@ -30,8 +34,9 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .requestMatchers(
+                                HttpMethod.GET,
                                 "/produtos", "/produtos/**",
-                                "/categorias", "/categorias/**",
+                                "/categoria", "/categoria/**",
                                 "/subcategorias", "/subcategorias/**"
                         ).permitAll()
 
@@ -47,13 +52,15 @@ public class SecurityConfig {
                 )
 
                 // Mantém os POST da API a funcionar sem token CSRF
+
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(
+                                "/categoria", "/categoria/**",
                                 "/produtos", "/produtos/**",
-                                "/categorias", "/categorias/**",
                                 "/subcategorias", "/subcategorias/**"
                         )
                 );
+
 
         return http.build();
     }
